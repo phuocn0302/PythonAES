@@ -12,7 +12,7 @@ def benchmark_operations(variable, functions_and_args):
     
     exec_time = time.perf_counter() - start_time
     
-    return variable, exec_time
+    return variable, exec_time * 1000 # x1000 for ms
 
 
 class BenchmarkedAES(AES):
