@@ -177,6 +177,9 @@ class FTPClientView:
         
         self.new_folder_button = ttk.Button(explorer_controls, text="New Folder", width=10)
         self.new_folder_button.pack(side=tk.LEFT, padx=5)
+
+        self.choose_file_button = ttk.Button(explorer_controls, text="Choose File", width=10)
+        self.choose_file_button.pack(side=tk.LEFT, padx=5)
         
         self.open_local_folder_button = ttk.Button(explorer_controls, text="Open Local Folder", width=15)
         self.open_local_folder_button.pack(side=tk.RIGHT, padx=5)    
@@ -228,6 +231,9 @@ class FTPClientView:
     def set_open_local_folder_command(self, command):
         self.open_local_folder_button.config(command=command)
     
+    def set_choose_file_command(self, command):
+        self.choose_file_button.config(command=command)
+
     def set_go_up_button_command(self, command):
         self.go_up_button.config(command=command)
 

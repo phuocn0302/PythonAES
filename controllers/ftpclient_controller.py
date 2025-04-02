@@ -28,6 +28,7 @@ class FTPClientController:
         self.view.set_new_folder_command(self.create_new_folder)
         self.view.set_download_command(self.download_selected)
         self.view.set_upload_command(self.upload_file)
+        self.view.set_choose_file_command(self.choose_file)
 
         self.view.set_context_menu_commands(
             self.download_file,
@@ -374,6 +375,32 @@ class FTPClientController:
             self.log_message(f"Error renaming remote item: {str(e)}")
             messagebox.showerror("Error", str(e))
     
+    def choose_file(self):
+        if not self.check_server_connection():
+            messagebox.showinfo("Info", "Not connected to a server")
+            return
+        
+        try:
+            item_id = self.view.file_explorer.selection()
+            item = self.view.file_explorer.item(item_id)
+            name = item['text'].strip()
+            tags = self.view.file_explorer.item(item_id, 'tags')
+            
+            if not tags or 'folder' in tags:
+                return 
+                
+            local_directory = self.get_local_directory()
+            local_path = os.path.join(local_directory, name)
+            
+            if self.manager.download_file(name, local_path):
+                messagebox.showinfo("Success", f"File downloaded to {local_path}, now switching to encryption tab")
+                self.view.main_view.notebook.select(self.view.main_view.encryption_tab)
+                self.main_controller.encryption_controller.browse_file(local_path)
+                
+        except Exception as e:
+            self.log_message(f"Error downloading file: {str(e)}")
+            messagebox.showerror("Error", str(e))
+
     def clear_log(self):
         self.view.clear_log()
     
