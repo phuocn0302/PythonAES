@@ -250,7 +250,7 @@ class FTPServerView:
         
         parent_dir = os.path.dirname(directory)
         if parent_dir != directory:
-            self.file_explorer.insert("", tk.END, text="..", values=("", ""),
+            self.file_explorer.insert("", tk.END, text="  ..", values=("", ""),
                                     tags=(parent_dir, "folder"),
                                     image=self.get_folder_icon())
         
@@ -267,7 +267,7 @@ class FTPServerView:
             item_path = os.path.join(directory, name)
             icon_type = "folder" if is_dir else "file"
             
-            self.file_explorer.insert("", tk.END, text=' ' + name, values=(size_str, modified), 
+            self.file_explorer.insert("", tk.END, text='  ' + name, values=(size_str, modified), 
                                     tags=(item_path, icon_type),
                                     image=self.get_folder_icon() if is_dir else self.get_file_icon())
 

@@ -196,7 +196,7 @@ class FTPClientView:
             
             icon_type = "folder" if is_dir else "file"
             
-            self.file_explorer.insert("", tk.END, text=' ' + name, values=(size_str, modified), 
+            self.file_explorer.insert("", tk.END, text='  ' + name, values=(size_str, modified), 
                                     tags=(name, icon_type),
                                     image=self.get_folder_icon() if is_dir else self.get_file_icon())
 

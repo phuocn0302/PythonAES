@@ -9,7 +9,7 @@ class MainView:
     def __init__(self, root):
         self.root = root
         self.root.title("AES Tool")
-        self.root.geometry("1100x800")
+        self.root.geometry("1280x800")
         self.root.resizable(True, True)
         
         self.notebook = ttk.Notebook(self.root)
