@@ -2,6 +2,7 @@ import tkinter as tk
 from tkinter import ttk, messagebox
 from views.encryption_view import EncryptionView
 from views.ftpserver_view import FTPServerView
+from views.ftpclient_view import FTPClientView
 
 
 class MainView:
@@ -16,12 +17,15 @@ class MainView:
         
         self.encryption_tab = ttk.Frame(self.notebook)
         self.ftp_server_tab = ttk.Frame(self.notebook)
+        self.ftp_client_tab = ttk.Frame(self.notebook)
         
         self.notebook.add(self.encryption_tab, text="Encryption/Decryption")
-        self.notebook.add(self.ftp_server_tab, text="FTP Server Hosting")
+        self.notebook.add(self.ftp_server_tab, text="FTP Server")
+        self.notebook.add(self.ftp_client_tab, text="FTP Client")
         
         self.encryption_view = EncryptionView(self.encryption_tab, self)
         self.ftp_server_view = FTPServerView(self.ftp_server_tab, self)
+        self.ftp_client_view = FTPClientView(self.ftp_client_tab, self)
     
 
     
