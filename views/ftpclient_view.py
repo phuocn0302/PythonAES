@@ -124,6 +124,9 @@ class FTPClientView:
         self.upload_button = ttk.Button(transfer_frame, text="Upload", width=12)
         self.upload_button.pack(side=tk.LEFT, padx=5)
 
+        self.choose_file_button = ttk.Button(transfer_frame, text="Choose File", width=10)
+        self.choose_file_button.pack(side=tk.LEFT, padx=5)
+
     def create_file_explorer(self, parent):
         explorer_frame = ttk.LabelFrame(parent, text="Remote File Explorer", padding=(10, 10))
         explorer_frame.pack(fill=tk.BOTH, expand=True, pady=5)
@@ -177,9 +180,6 @@ class FTPClientView:
         
         self.new_folder_button = ttk.Button(explorer_controls, text="New Folder", width=10)
         self.new_folder_button.pack(side=tk.LEFT, padx=5)
-
-        self.choose_file_button = ttk.Button(explorer_controls, text="Choose File", width=10)
-        self.choose_file_button.pack(side=tk.LEFT, padx=5)
         
         self.open_local_folder_button = ttk.Button(explorer_controls, text="Open Local Folder", width=15)
         self.open_local_folder_button.pack(side=tk.RIGHT, padx=5)    
